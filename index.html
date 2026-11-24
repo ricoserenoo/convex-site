@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CONVEX · Music People Opportunities</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;900&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box}
+body{margin:0;background:#0B0D0C;color:#fff;font-family:Inter,sans-serif;-webkit-font-smoothing:antialiased}
+a{color:#fff}
+.wrap{max-width:1280px;margin:0 auto;padding:0 24px}
+.lab{font-weight:500;text-transform:uppercase;letter-spacing:.2em;margin:0}
+.disp{font-weight:900;letter-spacing:-.03em;word-spacing:.14em;line-height:.95;margin:0}
+button,input,select,textarea{font:inherit}
+:focus-visible{outline:2px solid #A49E92;outline-offset:3px}
+header{background:#1A2B25;border-bottom:1px solid rgba(255,255,255,.12)}
+header nav{display:flex;flex-wrap:wrap;align-items:center;gap:14px 28px;padding:18px 24px}
+.logo{width:190px;display:block;color:#fff}.logo svg{width:100%;height:auto;display:block}
+.links{display:flex;flex-wrap:wrap;gap:6px 26px;align-items:center;margin-inline-start:auto}
+.links a{font-size:12px;text-decoration:none;padding:10px 0}
+.links a.cur{text-decoration:underline;text-underline-offset:7px}
+.btn{display:inline-block;font-size:13px;text-decoration:none;background:#fff;color:#1A2B25;padding:18px 28px;border-radius:999px;font-weight:500;border:0;cursor:pointer}
+.btn.out{background:transparent;color:#fff;border:1.5px solid #fff;padding:16.5px 28px}
+.btn.dk{background:#1A2B25;color:#fff}
+.btn:disabled{opacity:.5;cursor:default}
+.sec{padding:80px 0}
+.green{background:#1A2B25}.brown{background:#7F5434}.cream{background:#EFECE6;color:#0B0D0C}.olive{background:#58562F}
+.h1{font-size:clamp(52px,9vw,140px)}.h2{font-size:clamp(34px,5vw,68px)}
+.rule{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px 24px;margin-top:40px;padding-bottom:16px;border-bottom:1.5px solid #fff}
+.lead{font-size:19px;line-height:1.6;color:rgba(255,255,255,.86);max-width:620px;margin:24px 0 0}
+.row{display:flex;flex-wrap:wrap;gap:14px;margin-top:32px}
+.lineup{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:0 24px}
+.lineup div{padding:24px 0;border-bottom:1px solid rgba(255,255,255,.3);display:flex;align-items:baseline;gap:16px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px}
+.card{border-radius:6px;padding:36px;display:flex;flex-direction:column;gap:20px}
+.card ul{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:10px;font-size:15px}
+.card li{border-top:1px solid rgba(255,255,255,.18);padding-top:10px}
+.proc{margin:0;padding:0;list-style:none;display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:0 28px;border-top:1.5px solid #0B0D0C}
+.proc li{padding-top:26px}.proc .n{font-size:42px;color:#7F5434}.proc b{display:block;margin:10px 0 6px;font-size:18px}.proc span{font-size:15px;line-height:1.6;color:#3B3A36}
+.eco{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px}
+.eco div{border:1px solid rgba(255,255,255,.18);border-radius:6px;padding:26px;min-height:170px}
+.eco p{margin:10px 0 0;font-size:15px;line-height:1.6;color:rgba(255,255,255,.78)}
+.layout{display:flex;flex-wrap:wrap;gap:48px;align-items:flex-start}
+form.f{flex:999 1 560px;min-width:0;display:flex;flex-direction:column;gap:46px}
+fieldset{border:0;margin:0;padding:0;min-width:0;display:flex;flex-direction:column;gap:20px}
+legend{padding:0 0 12px;margin-bottom:20px;display:flex;align-items:baseline;gap:14px;width:100%;border-bottom:1.5px solid #0B0D0C;font-weight:900;font-size:28px;letter-spacing:-.03em}
+legend i{font-style:normal;color:#7F5434;font-size:24px}
+.g2{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:20px}
+.fl{display:flex;flex-direction:column;gap:8px;font-size:14px;font-weight:600}
+.in{width:100%;min-height:52px;padding:14px 16px;border:1.5px solid #B9B3A7;border-radius:4px;background:#fff;color:#0B0D0C;font-size:16px;font-weight:400}
+.in:focus{outline:none;border-color:#1A2B25;box-shadow:0 0 0 3px rgba(26,43,37,.18)}
+.dk .in,.in.d{background:#14211C;color:#fff;border-color:rgba(255,255,255,.3)}
+.chips{display:flex;flex-wrap:wrap;gap:10px}
+.chip{position:relative}.chip input{position:absolute;opacity:0;width:1px;height:1px}
+.chip span{display:inline-flex;align-items:center;min-height:44px;padding:0 16px;border:1.5px solid #B9B3A7;border-radius:999px;background:#fff;color:#0B0D0C;font-size:15px;cursor:pointer}
+.chip input:checked+span{background:#1A2B25;border-color:#1A2B25;color:#fff}
+.chip input:focus-visible+span{outline:2px solid #A49E92;outline-offset:3px}
+.drop{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:16px;border:1.5px dashed #1A2B25;border-radius:6px;background:#fff;padding:24px;cursor:pointer;font-weight:400;position:relative}
+.drop input{position:absolute;width:1px;height:1px;opacity:0}
+.drop:focus-within{outline:2px solid #A49E92;outline-offset:3px}
+.drop .pill{border:1.5px solid #1A2B25;border-radius:999px;padding:14px 20px;font-size:12px}
+.hint{font-size:13px;font-weight:400;color:#58562F}
+.err{margin:0;padding:14px 16px;border-radius:4px;background:#F6E3DF;color:#8A2318;font-size:15px;font-weight:500}
+.ok{margin:0;padding:14px 16px;border-radius:4px;background:#DDE8DF;color:#1A2B25;font-size:15px;font-weight:500}
+aside.side{flex:1 1 300px;min-width:0;display:flex;flex-direction:column;gap:20px}
+.panel{border-radius:6px;padding:28px;display:flex;flex-direction:column;gap:14px}
+.steps{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:12px}
+.steps li{padding-top:12px;border-top:3px solid rgba(0,0,0,.18);font-size:14px;font-weight:600;color:#58562F}
+.steps li.on{border-top-color:#1A2B25;color:#0B0D0C}
+.steps.dk li{border-top-color:rgba(255,255,255,.2);color:#A49E92}.steps.dk li.on{border-top-color:#fff;color:#fff}
+.steps .lab{display:block;font-size:10px;margin-bottom:6px}
+.box{border:1px solid rgba(255,255,255,.18);border-radius:6px;padding:28px;display:flex;flex-direction:column;gap:20px;max-width:720px}
+.rules{list-style:none;margin:0;padding:0;border-top:1.5px solid #0B0D0C}
+.rules li{display:flex;flex-wrap:wrap;gap:8px 32px;padding:26px 0;border-bottom:1px solid #D6D1C7}
+.rules b{flex:0 1 240px;font-size:24px;font-weight:900;letter-spacing:-.03em}.rules span{flex:1 1 380px;font-size:17px;line-height:1.65;color:#2A2925}
+.tabs{display:flex;gap:10px;margin-bottom:24px;flex-wrap:wrap}
+.tab{min-height:44px;padding:0 20px;border-radius:999px;border:1.5px solid #B9B3A7;background:#fff;color:#0B0D0C;cursor:pointer;font-size:14px}
+.tab.on{background:#1A2B25;color:#fff;border-color:#1A2B25}
+.app{background:#fff;border-radius:6px;padding:24px;margin-bottom:16px;display:flex;flex-direction:column;gap:14px}
+.app .top{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px 16px;align-items:baseline}
+.app dl{margin:0;display:grid;grid-template-columns:auto 1fr;gap:6px 16px;font-size:14px}.app dt{color:#58562F;font-weight:600}.app dd{margin:0;word-break:break-word}
+.tag{display:inline-block;padding:4px 12px;border-radius:999px;background:#EFECE6;font-size:12px;font-weight:600}
+.chat{background:#fff;border-radius:6px;padding:24px;display:flex;flex-direction:column;gap:16px}
+.msgs{display:flex;flex-direction:column;gap:14px;min-height:280px;max-height:55vh;overflow-y:auto}
+.m{display:flex;flex-direction:column;gap:4px;max-width:85%}.m.me{align-self:flex-end;align-items:flex-end}
+.m small{font-size:11px;color:#58562F}.m p{margin:0;padding:12px 16px;border-radius:12px;font-size:16px;line-height:1.5;white-space:pre-wrap;word-break:break-word}
+.send{display:flex;flex-wrap:wrap;gap:10px}.send .in{flex:1 1 220px;min-width:0}
+footer{background:#1A2B25;border-top:1px solid rgba(255,255,255,.12)}
+footer .wrap{padding-top:48px;padding-bottom:32px;display:flex;flex-wrap:wrap;justify-content:space-between;gap:32px}
+footer a{display:block;font-size:15px;text-decoration:none;padding:6px 0}
+.copy{border-top:1px solid rgba(255,255,255,.14);padding:18px 24px 28px;font-size:11px;color:#A49E92}
+[hidden]{display:none!important}
+</style>
+</head>
+<body>
+<header><nav>
+  <a class="logo" href="#/" aria-label="Convex"><svg viewBox="0 0 1060 184.653" fill="currentColor" role="img" aria-label="Convex"><path transform="translate(-68.888 -2.395)" d="M612.5,167.174c0,4.525-1.508,5.982-6.135,5.982-15.476.026-30.944-.06-46.42.077a5.583,5.583,0,0,1-5.684-3.255c-10.687-18.714-21.543-37.335-32.349-55.972-.871-1.516-1.816-2.991-2.73-4.482l-.729.212q.69,28.3,1.389,56.594c.144,5.923-.768,6.835-6.826,6.843q-20.44,0-40.889-.009c-4.448-.009-6.016-1.628-6.016-6.144v-.593A26.966,26.966,0,0,1,473.76,147.6c14.771-15.15,23.374-33.333,23.374-52.885,0-19.338-8.415-37.337-22.894-52.386a28.958,28.958,0,0,1-8.161-20.062v-.066c0-4.312,1.534-5.906,5.8-5.914,15.331-.026,30.662.06,45.994-.085,2.718-.017,4.014,1.091,5.232,3.272q16.9,30.27,33.952,60.446c.8,1.415,1.62,2.812,2.992,5.2,0-6.724.119-12.169-.018-17.615-.383-15.05-.9-30.083-1.286-45.124-.12-4.781,1.21-6.085,5.965-6.093q20.875-.038,41.74,0c4.764.009,6.025,1.27,6.025,6.068q.04,72.4.017,144.814"/><path transform="translate(-152.874 -2.382)" d="M1122.04,131.575c-6.84,11.494-13.728,22.239-19.718,33.464-3.242,6.074-6.877,8.534-14.049,8.236-16.3-.677-32.652-.15-48.981-.309-1.641-.016-4.044-.981-4.684-2.228-.661-1.285-.135-3.82.792-5.185q24.135-35.566,48.594-70.912c1.793-2.588,1.544-4.185-.183-6.6q-23-32.216-45.691-64.649c-.874-1.248-1.494-3.671-.861-4.725a6.183,6.183,0,0,1,4.589-2.382c18.6-.163,37.2-.061,55.805-.161,2.557-.014,4.073.692,5.411,2.99,5.783,9.922,11.786,19.716,17.721,29.548.717,1.188,1.5,2.333,2.7,4.18,2.961-5.044,5.67-9.6,8.321-14.188,3.757-6.507,7.551-13,11.16-19.588a4.955,4.955,0,0,1,5.013-2.944c18.319.1,36.639,0,54.955.18a6.432,6.432,0,0,1,4.489,2.634c.58.858-.11,3.128-.917,4.287q-22.988,33-46.157,65.88c-.322.46-.564.978-1.009,1.761q11.869,16.925,23.839,34c9.528,13.591,19.1,27.154,28.515,40.821.869,1.261,1.552,3.609.949,4.683a6.066,6.066,0,0,1-4.483,2.588c-19.028.173-38.057.055-57.084.176-2.684.017-4.057-1.081-5.34-3.2-6.617-10.915-13.343-21.765-20.042-32.632-1.09-1.768-2.235-3.5-3.655-5.72"/><path transform="translate(-97.844 -2.397)" d="M723.78,16.287c7.595,28.417,15.138,56.639,22.68,84.861l.865.083c1.857-7.043,3.755-14.077,5.563-21.132q7.749-30.241,15.391-60.509c.623-2.488,1.658-3.391,4.3-3.373,17.744.117,35.491.04,53.236.075,4.4.009,6.125,2.478,4.657,6.539Q805.839,90.967,781.185,159.1c-1.3,3.6-2.85,7.124-3.845,10.8-.759,2.8-2.275,3.328-4.9,3.313q-26.618-.15-53.236.018c-2.769.02-3.82-.948-4.72-3.5Q689.12,97.79,663.546,25.928c-.474-1.335-.981-2.665-1.352-4.03-.805-2.962.844-5.562,3.833-5.573,19.15-.073,38.3-.037,57.753-.037"/><path transform="translate(-130.618 -2.408)" d="M937.472,64.1v7.144c1.548.1,3.033.264,4.518.266q20.66.031,41.318.012c5.406,0,6.457,1.011,6.471,6.491q.038,16.187-.01,32.373c-.014,4.994-1.314,6.284-6.29,6.29-15.178.015-30.355.005-45.89.005v8.692h4.5q24.066,0,48.134,0c5.693,0,6.864,1.211,6.865,7.022q.005,17.252,0,34.5c-.006,4.759-1.512,6.264-6.352,6.265q-50.476.023-100.952.006c-4.714,0-6.036-1.339-6.037-6.05q-.014-72.2-.006-144.4c0-5.39,1.046-6.419,6.5-6.42q48.346-.014,96.693,0c5.174,0,6.3,1.121,6.3,6.153q.018,17.89.011,35.778c-.006,4.433-1.4,5.854-5.8,5.861q-22.576.037-45.151.011h-4.815"/><path transform="translate(0.0 -1.607)" d="M140.331,152.727a4.131,4.131,0,0,1-.086,6.325,67.855,67.855,0,0,1-20.416,11.457c-29.522,10.371-58.189,8.863-84.718-8.667-20.9-13.814-31.974-34.02-34.557-58.861-2.309-22.217,2.505-42.7,16.243-60.5C33.27,21.145,55.845,11.736,82.305,10.927c21.313-.639,41.05,4.491,58.494,17.155l.043.03a4.107,4.107,0,0,1,.176,6.432c-12.219,10.508-21.267,22.8-26.162,36.214a3.467,3.467,0,0,1-5.736,1.278l-.072-.074C96.239,58.854,73.221,61.668,64.367,77.424,55.325,93.5,61.5,114.656,77.243,121.508a28.128,28.128,0,0,0,31.378-6.323l.116-.118a3.569,3.569,0,0,1,5.887,1.4c4.748,13.406,13.642,25.718,25.707,36.264"/><path transform="translate(-22.304 0.0)" d="M205.4,92.326c0-39.7,20.379-73.936,49.8-89.725,1.713-.92.453-2.942-1.588-2.551C194.351,11.373,150.9,48.395,150.9,92.326s43.448,80.955,102.7,92.277c2.042.39,3.3-1.632,1.588-2.551-29.419-15.79-49.8-50.027-49.8-89.726"/><path transform="translate(-52.943 0.0)" d="M360.6.049c-2.042-.39-3.3,1.632-1.588,2.551,29.419,15.79,49.8,50.027,49.8,89.726s-20.379,73.937-49.8,89.726c-1.713.919-.453,2.941,1.588,2.551,59.255-11.322,102.7-48.344,102.7-92.277S419.851,11.372,360.6.049"/></svg></a>
+  <div class="links" id="nav">
+    <a class="lab" href="#/soirees">Soirées</a>
+    <a class="lab" href="#/set">Proposer un set</a>
+    <a class="lab" href="#/battle">Battle B2B</a>
+    <a class="lab" href="#/suivi">Suivi</a>
+    <a class="lab" href="#/communaute">Communauté</a>
+    <a class="lab btn" href="#/set">Candidater</a>
+  </div>
+</nav></header>
+<main id="app"></main>
+<footer>
+  <div class="wrap">
+    <div>
+      <div class="logo" id="flogo" style="width:200px"></div>
+      <p class="lab" style="font-size:12px;color:#A49E92;margin-top:16px">Music / People / Opportunities</p>
+    </div>
+    <div style="display:flex;flex-wrap:wrap;gap:48px">
+      <div><p class="lab" style="font-size:11px;color:#A49E92;margin-bottom:6px">Rejoindre</p><a href="#/set">Proposer un set</a><a href="#/battle">Battle B2B</a><a href="#/reglement">Règlement du battle</a><a href="#/suivi">Suivi de candidature</a></div>
+      <div><p class="lab" style="font-size:11px;color:#A49E92;margin-bottom:6px">Équipe</p><a href="#/equipe">Espace équipe</a><p style="font-size:15px;margin:6px 0">Casablanca, Maroc</p></div>
+    </div>
+  </div>
+  <div class="copy lab">© 2026 Convex</div>
+</footer>
+
+<template id="t-home">
+<section class="green"><div class="wrap" style="padding-top:56px;padding-bottom:72px">
+  <div style="display:flex;flex-wrap:wrap;justify-content:space-between;gap:24px">
+    <p class="lab" style="font-size:13px;color:rgba(255,255,255,.82)">Collectif · Casablanca</p>
+    <p class="lab" style="font-size:13px;line-height:1.8;text-align:end;color:rgba(255,255,255,.82)">Music<br>People<br>Opportunities</p>
+  </div>
+  <h1 class="disp h1" style="margin-top:40px">Tous les sons.<br>Tous les reflets.</h1>
+  <div class="rule"><p class="lab" style="font-size:13px">Soirées / Battle B2B / Label / Academy</p><p class="lab" style="font-size:13px;color:rgba(255,255,255,.82)">Convex Studio, Casablanca</p></div>
+  <p class="lead">Convex réunit DJs, producteurs et public autour de soirées intimistes, d'un battle back-to-back, d'un label et d'une académie. Propose ton set ou inscris-toi au concours.</p>
+  <div class="row"><a class="btn" href="#/set">Proposer un set</a><a class="btn out" href="#/battle">Battle B2B</a></div>
+</div></section>
+<section id="soirees" class="brown"><div class="wrap" style="padding-top:80px;padding-bottom:80px">
+  <h2 class="disp" style="font-size:clamp(64px,9vw,128px)">Lineup</h2>
+  <div style="display:flex;justify-content:space-between;gap:16px;border-bottom:1.5px solid #fff;padding:24px 0 16px"><p class="lab" style="font-size:13px">Novembre 2026</p><p class="lab" style="font-size:13px">4 dates</p></div>
+  <div class="lineup">
+    <div><span class="lab" style="font-size:12px;color:#F1E6DA">Fri</span><span class="disp" style="font-size:64px">06</span><span class="disp" style="font-size:30px">Rysen</span></div>
+    <div><span class="lab" style="font-size:12px;color:#F1E6DA">Fri</span><span class="disp" style="font-size:64px">13</span><span class="disp" style="font-size:30px">Anirr</span></div>
+    <div><span class="lab" style="font-size:12px;color:#F1E6DA">Fri</span><span class="disp" style="font-size:64px">20</span><span class="disp" style="font-size:30px">Sue</span></div>
+    <div><span class="lab" style="font-size:12px;color:#F1E6DA">Fri</span><span class="disp" style="font-size:64px">27</span><span class="disp" style="font-size:30px">Didiss</span></div>
+  </div>
+</div></section>
+<section class="cream"><div class="wrap" style="padding-top:96px;padding-bottom:96px">
+  <p class="lab" style="font-size:13px;color:#58562F;margin-bottom:18px">Rejoindre Convex</p>
+  <h2 class="disp h2" style="max-width:900px;margin-bottom:48px">Deux portes pour monter derrière le booth.</h2>
+  <div class="grid">
+    <article class="card green"><p class="lab" style="font-size:12px;color:#A49E92">01 · Toute l'année</p><h3 class="disp" style="font-size:44px">Proposer un set</h3>
+      <p style="margin:0;font-size:17px;line-height:1.6;color:rgba(255,255,255,.86)">Envoie ton profil, un mix, ta vidéo et ta motivation. L'équipe écoute chaque dossier complet et te répond pour une date au Convex Studio.</p>
+      <ul><li>Mix audio (SoundCloud, Mixcloud, Drive)</li><li>Vidéo de toi aux platines (fichier)</li><li>Quelques lignes de motivation</li></ul>
+      <a class="btn" href="#/set" style="margin-top:auto;align-self:flex-start">Proposer mon set</a></article>
+    <article class="card olive"><p class="lab" style="font-size:12px;color:#E6E1D3">02 · Concours</p><h3 class="disp" style="font-size:44px">Battle B2B</h3>
+      <p style="margin:0;font-size:17px;line-height:1.6;color:rgba(255,255,255,.9)">Les DJs s'affrontent dos à dos, face au jury. La communauté repêche un finaliste sur Instagram. Trois lauréats se partagent le cashprize.</p>
+      <ul><li>6 contre 6, puis 3 contre 3</li><li>Repêchage par vote Instagram</li><li>Cashprize 10 000 : 5 000 / 3 000 / 2 000</li></ul>
+      <a class="btn" href="#/battle" style="margin-top:auto;align-self:flex-start;color:#58562F">M'inscrire au battle</a></article>
+  </div>
+</div></section>
+<section class="cream" style="border-top:1px solid #D6D1C7"><div class="wrap" style="padding-top:80px;padding-bottom:96px">
+  <div style="display:flex;flex-wrap:wrap;justify-content:space-between;gap:16px;align-items:flex-end;margin-bottom:40px"><h2 class="disp" style="font-size:clamp(34px,4vw,52px)">Comment on étudie ta proposition</h2><p class="lab" style="font-size:12px;color:#58562F">Chaque dossier est lu</p></div>
+  <ol class="proc">
+    <li><div class="disp n">01</div><b>Tu envoies ton dossier</b><span>Profil, lien vers ton mix, vidéo, motivation.</span></li>
+    <li><div class="disp n">02</div><b>Accusé de réception</b><span>Tu reçois une référence pour suivre ton dossier.</span></li>
+    <li><div class="disp n">03</div><b>Écoute par l'équipe</b><span>Chaque set est écouté par l'équipe Convex.</span></li>
+    <li><div class="disp n">04</div><b>On te répond</b><span>Statut et réponse visibles sur la page Suivi.</span></li>
+  </ol>
+</div></section>
+<section id="communaute"><div class="wrap" style="padding-top:96px;padding-bottom:96px">
+  <p class="lab" style="font-size:13px;color:#A49E92;margin-bottom:18px">La communauté</p>
+  <h2 class="disp h2" style="max-width:900px;margin-bottom:48px">Plus qu'une soirée, un écosystème.</h2>
+  <div class="eco">
+    <div><p class="disp" style="font-size:30px">Mixes</p><p>Une plateforme de diffusion des sets Convex.</p></div>
+    <div><p class="disp" style="font-size:30px">Label</p><p>Ultra-sélectif : des tracks qui racontent une histoire.</p></div>
+    <div><p class="disp" style="font-size:30px">Soirées</p><p>Lieux atypiques, 200 personnes maximum.</p></div>
+    <div><p class="disp" style="font-size:30px">Academy</p><p>Un cycle de formation sur plusieurs week-ends.</p></div>
+    <div><p class="disp" style="font-size:30px">Merch</p><p>Textile et objets DJ, dont le collier clé USB.</p></div>
+  </div>
+</div></section>
+</template>
+
+<template id="t-set">
+<section class="green"><div class="wrap" style="padding-top:56px;padding-bottom:64px">
+  <p class="lab" style="font-size:13px;color:#A49E92;margin-bottom:20px">Candidature · Ouverte toute l'année</p>
+  <h1 class="disp" style="font-size:clamp(52px,7.5vw,100px)">Propose ton set.</h1>
+  <p class="lead">Dis-nous qui tu es, ce que tu joues et pourquoi Convex. La vidéo est obligatoire : les dossiers complets passent en priorité.</p>
+</div></section>
+<div class="cream"><div class="wrap" style="padding-top:56px;padding-bottom:96px"><div class="layout">
+<form class="f" data-kind="set">
+  <fieldset><legend><i>01</i>Toi</legend>
+    <div class="g2">
+      <label class="fl">Nom d'artiste *<input class="in" name="artist" required placeholder="Rysen"></label>
+      <label class="fl">Prénom et nom *<input class="in" name="full_name" required autocomplete="name"></label>
+      <label class="fl">Email *<input class="in" name="email" type="email" required autocomplete="email"></label>
+      <label class="fl">Téléphone (WhatsApp) *<input class="in" name="phone" type="tel" required placeholder="+212"></label>
+      <label class="fl">Ville<input class="in" name="city" placeholder="Casablanca"></label>
+      <label class="fl">Instagram *<input class="in" name="instagram" required placeholder="@"></label>
+    </div></fieldset>
+  <fieldset><legend><i>02</i>Ton son</legend>
+    <p style="margin:0;font-size:14px;font-weight:600">Styles que tu joues</p>
+    <div class="chips">
+      <label class="chip"><input type="checkbox" name="styles" value="House" checked><span>House</span></label>
+      <label class="chip"><input type="checkbox" name="styles" value="Afro house" checked><span>Afro house</span></label>
+      <label class="chip"><input type="checkbox" name="styles" value="Deep house"><span>Deep house</span></label>
+      <label class="chip"><input type="checkbox" name="styles" value="Techno"><span>Techno</span></label>
+      <label class="chip"><input type="checkbox" name="styles" value="Minimal"><span>Minimal</span></label>
+      <label class="chip"><input type="checkbox" name="styles" value="Disco"><span>Disco</span></label>
+      <label class="chip"><input type="checkbox" name="styles" value="Amapiano"><span>Amapiano</span></label>
+      <label class="chip"><input type="checkbox" name="styles" value="Hip-hop"><span>Hip-hop</span></label>
+      <label class="chip"><input type="checkbox" name="styles" value="Autre"><span>Autre</span></label>
+    </div>
+    <div class="g2">
+      <label class="fl">Depuis combien de temps tu mixes ?<select class="in" name="years"><option>Moins d'un an</option><option>1 à 3 ans</option><option>3 à 5 ans</option><option>Plus de 5 ans</option></select></label>
+      <label class="fl">Ton matériel habituel<select class="in" name="gear"><option>CDJ / XDJ</option><option>Contrôleur</option><option>Vinyles</option><option>Un peu de tout</option></select></label>
+    </div>
+    <p style="margin:0;font-size:14px;font-weight:600">Est-ce que tu produis ?</p>
+    <div class="chips">
+      <label class="chip"><input type="radio" name="prod" value="Oui" checked><span>Oui</span></label>
+      <label class="chip"><input type="radio" name="prod" value="J'apprends"><span>J'apprends</span></label>
+      <label class="chip"><input type="radio" name="prod" value="Non"><span>Non</span></label>
+    </div>
+    <label class="fl">Lien vers tes productions (optionnel)<input class="in" name="prodlink" type="url" placeholder="SoundCloud, Spotify, Bandcamp"></label>
+  </fieldset>
+  <fieldset><legend><i>03</i>Ton set</legend>
+    <label class="fl">Lien vers ton mix (30 min minimum) *<input class="in" name="mix" type="url" required placeholder="SoundCloud, Mixcloud, YouTube, Google Drive"></label>
+    <div class="fl"><span>Vidéo de toi aux platines (fichier) *</span>
+      <label class="drop"><span class="vname" style="font-size:15px;color:#3B3A36">Dépose ta vidéo ici. MP4, MOV ou WebM, 50 Mo max.</span><span class="pill lab">Choisir</span><input type="file" name="video" accept="video/mp4,video/quicktime,video/webm" required></label>
+      <span class="hint">Obligatoire. Un lien ou du texte n'est pas accepté : seule la vidéo envoyée compte.</span></div>
+    <div class="g2">
+      <label class="fl">Durée de set souhaitée<select class="in" name="duration"><option>1 h</option><option>1 h 30</option><option>2 h</option><option>Plus</option></select></label>
+      <label class="fl">Tes disponibilités<input class="in" name="dispo" placeholder="Ex. vendredis de décembre"></label>
+    </div></fieldset>
+  <fieldset><legend><i>04</i>Pourquoi Convex</legend>
+    <label class="fl">Ta motivation *<textarea class="in" name="motivation" rows="6" required style="resize:vertical;min-height:160px" placeholder="Ton parcours, ton univers, ce que tu veux faire vivre au public Convex."></textarea></label>
+    <label style="display:flex;gap:12px;align-items:flex-start;font-size:14px;line-height:1.6;color:#3B3A36;cursor:pointer"><input type="checkbox" name="consent" required style="accent-color:#1A2B25;width:20px;height:20px;margin:2px 0 0;flex:none">J'accepte que Convex conserve mon dossier pour étudier ma candidature et me recontacter.</label>
+    <p class="err" role="alert" hidden></p>
+    <div style="display:flex;flex-wrap:wrap;align-items:center;gap:20px"><button class="btn dk lab" type="submit">Envoyer ma proposition</button><span class="hint">Tu reçois une référence pour suivre ton dossier.</span></div>
+  </fieldset>
+</form>
+<aside class="side">
+  <div class="panel" style="background:#7F5434;color:#fff"><p class="lab" style="font-size:12px;color:#F1E6DA">Et après ?</p>
+    <p style="margin:0;font-size:15px;line-height:1.6">1. Accusé de réception automatique<br>2. Écoute par l'équipe Convex<br>3. Réponse et proposition de date</p></div>
+  <a class="btn dk" href="#/suivi" style="text-align:center">Suivre un dossier existant</a>
+</aside>
+</div></div></div>
+</template>
+
+<template id="t-battle">
+<section class="olive"><div class="wrap" style="padding-top:64px;padding-bottom:72px">
+  <p class="lab" style="font-size:13px;color:#E6E1D3;margin-bottom:24px">Concours DJ · Saison 1</p>
+  <h1 class="disp" style="font-size:clamp(60px,11vw,150px)">Battle B2B</h1>
+  <p class="lead" style="color:rgba(255,255,255,.92)">Dos à dos derrière le booth, face au jury. Un tournoi, un repêchage voté par la communauté et 10 000 de cashprize.</p>
+  <div class="row"><a class="btn" href="#/battle-form" style="color:#58562F">M'inscrire au battle</a><a class="btn out" href="#/reglement">Lire le règlement</a></div>
+</div></section>
+<section><div class="wrap" style="padding-top:80px;padding-bottom:40px">
+  <p class="lab" style="font-size:13px;color:#A49E92;margin-bottom:16px">Le format</p>
+  <h2 class="disp h2" style="margin-bottom:40px">Quatre temps, un vainqueur.</h2>
+  <div class="eco">
+    <div><p class="lab" style="font-size:11px;color:#A49E92">Tour 1</p><p class="disp" style="font-size:44px">6 vs 6</p><p>Premier passage dos à dos. Le jury note chaque set en direct.</p></div>
+    <div><p class="lab" style="font-size:11px;color:#A49E92">Tour 2</p><p class="disp" style="font-size:44px">3 vs 3</p><p>Les qualifiés s'affrontent à nouveau. Le niveau monte.</p></div>
+    <div style="background:#7F5434;border-color:#7F5434"><p class="lab" style="font-size:11px;color:#F1E6DA">Repêchage</p><p class="disp" style="font-size:44px">Vote</p><p>Parmi les 3 DJs en ballottage, la communauté Instagram en repêche un.</p></div>
+    <div style="background:#fff;color:#0B0D0C;border-color:#fff"><p class="lab" style="font-size:11px;color:#58562F">Finale</p><p class="disp" style="font-size:44px">Finale</p><p style="color:#3B3A36">Les qualifiés et le repêché jouent pour le podium.</p></div>
+  </div>
+</div></section>
+<section class="green"><div class="wrap" style="padding-top:80px;padding-bottom:96px"><div class="layout">
+  <div style="flex:1 1 320px;min-width:0;display:flex;flex-direction:column;gap:18px">
+    <p class="lab" style="font-size:13px;color:#A49E92">Inscription</p>
+    <h2 class="disp" style="font-size:clamp(42px,5.5vw,70px)">Monte sur le ring.</h2>
+    <p style="margin:0;font-size:17px;line-height:1.6;color:rgba(255,255,255,.86)">On sélectionne les DJs du tournoi à partir de ton mix et de ta vidéo. Un dossier complet est obligatoire.</p>
+    <a href="#/reglement">Lire le règlement</a>
+  </div>
+  <form class="f dk" data-kind="battle" style="background:#0B0D0C;border-radius:6px;padding:36px;gap:22px">
+    <div class="g2">
+      <label class="fl">Nom d'artiste *<input class="in d" name="artist" required></label>
+      <label class="fl">Prénom et nom *<input class="in d" name="full_name" required autocomplete="name"></label>
+      <label class="fl">Email *<input class="in d" name="email" type="email" required autocomplete="email"></label>
+      <label class="fl">Téléphone *<input class="in d" name="phone" type="tel" required placeholder="+212"></label>
+      <label class="fl">Instagram *<input class="in d" name="instagram" required placeholder="@"></label>
+      <label class="fl">Style principal *<select class="in d" name="style"><option>House</option><option>Afro house</option><option>Techno</option><option>Minimal</option><option>Autre</option></select></label>
+    </div>
+    <label class="fl">Lien vers un mix de 20 à 30 min *<input class="in d" name="mix" type="url" required placeholder="SoundCloud, Mixcloud, YouTube, Google Drive"></label>
+    <div class="fl"><span>Vidéo de toi aux platines (fichier) *</span>
+      <label class="drop" style="background:#14211C;border-color:#A49E92"><span class="vname" style="font-size:15px;color:rgba(255,255,255,.86)">Dépose ta vidéo ici. MP4, MOV ou WebM, 50 Mo max.</span><span class="pill lab" style="border-color:#fff">Choisir</span><input type="file" name="video" accept="video/mp4,video/quicktime,video/webm" required></label>
+      <span class="hint" style="color:#A49E92">Obligatoire. Un lien ou du texte n'est pas accepté.</span></div>
+    <label class="fl">Pourquoi tu veux ce battle<textarea class="in d" name="why" rows="4" style="resize:vertical;min-height:120px"></textarea></label>
+    <label style="display:flex;gap:12px;align-items:flex-start;font-size:14px;line-height:1.6;color:rgba(255,255,255,.86);cursor:pointer"><input type="checkbox" name="consent" required style="accent-color:#A49E92;width:20px;height:20px;margin:2px 0 0;flex:none">J'ai lu le règlement et j'accepte d'être filmé pendant la compétition.</label>
+    <p class="err" role="alert" hidden style="background:#3A1A16;color:#F6D5CF"></p>
+    <div><button class="btn lab" type="submit" style="color:#0B0D0C">M'inscrire au battle</button></div>
+  </form>
+</div></div></section>
+</template>
+
+<template id="t-rules">
+<section class="olive"><div class="wrap" style="max-width:960px;padding-top:56px;padding-bottom:64px">
+  <a class="lab" href="#/battle" style="font-size:12px;text-decoration:none">← Battle B2B</a>
+  <h1 class="disp" style="margin-top:28px;font-size:clamp(48px,7vw,96px)">Règlement du Battle B2B</h1>
+</div></section>
+<section class="cream"><div class="wrap" style="max-width:960px;padding-top:56px;padding-bottom:96px">
+  <ol class="rules">
+    <li><b>Format</b><span>Le tournoi se joue en back-to-back, dos à dos, face au jury : premier tour en 6 contre 6, deuxième tour en 3 contre 3, puis finale.</span></li>
+    <li><b>Sélection</b><span>Les participants sont choisis par l'équipe Convex à partir du mix et de la vidéo envoyés. Seuls les dossiers complets sont étudiés.</span></li>
+    <li><b>Repêchage</b><span>Après le deuxième tour, la communauté vote sur Instagram pour repêcher un DJ parmi les trois en ballottage. Il rejoint la finale.</span></li>
+    <li><b>Cashprize</b><span>10 000 au total : 5 000 pour le 1er, 3 000 pour le 2e, 2 000 pour le 3e.</span></li>
+    <li><b>Tournage</b><span>La compétition est filmée. En s'inscrivant, chaque participant accepte la diffusion des images sur les réseaux Convex.</span></li>
+  </ol>
+  <p style="margin:28px 0 0;font-size:15px;line-height:1.6;color:#58562F">Les dates, le lieu et les détails pratiques seront communiqués aux participants sélectionnés.</p>
+  <a class="btn dk lab" href="#/battle-form" style="margin-top:32px">M'inscrire au battle</a>
+</div></section>
+</template>
+
+<template id="t-track">
+<section class="green"><div class="wrap" style="padding-top:56px;padding-bottom:64px">
+  <p class="lab" style="font-size:13px;color:#A49E92;margin-bottom:20px">Suivi de candidature</p>
+  <h1 class="disp" style="font-size:clamp(52px,7.5vw,100px)">Ma candidature.</h1>
+  <p class="lead">Entre la référence reçue à l'envoi et ton email pour voir où en est ton dossier.</p>
+</div></section>
+<div class="cream"><div class="wrap" style="padding-top:56px;padding-bottom:96px;max-width:760px">
+  <form id="trackForm" style="display:flex;flex-direction:column;gap:20px">
+    <div class="g2">
+      <label class="fl">Référence *<input class="in" name="ref" required placeholder="CVX-XXXXXX" autocomplete="off"></label>
+      <label class="fl">Email *<input class="in" name="email" type="email" required autocomplete="email"></label>
+    </div>
+    <p class="err" role="alert" hidden></p>
+    <div><button class="btn dk lab" type="submit">Voir mon dossier</button></div>
+  </form>
+  <div id="trackOut" style="margin-top:40px"></div>
+</div></div>
+</template>
+
+<template id="t-team">
+<section class="green"><div class="wrap" style="padding-top:56px;padding-bottom:56px">
+  <p class="lab" style="font-size:13px;color:#A49E92;margin-bottom:20px">Espace équipe · ID, Rico, Ayla</p>
+  <h1 class="disp" style="font-size:clamp(52px,7.5vw,100px)">Équipe Convex.</h1>
+</div></section>
+<div class="cream"><div class="wrap" style="padding-top:48px;padding-bottom:96px"><div id="team"></div></div></div>
+</template>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="config.js"></script>
+<script>
+(function () {
+  var C = window.CVX_CONFIG || {};
+  var sb = (C.url && C.key && window.supabase) ? window.supabase.createClient(C.url, C.key) : null;
+  document.getElementById("flogo").innerHTML = document.querySelector("header .logo").innerHTML;
+  var app = document.getElementById("app");
+  var chans = [];
+  var ST = ["recu", "en_cours", "traite", "reponse"];
+  var STL = { recu: "Reçu", en_cours: "En cours", traite: "Traité", reponse: "Réponse envoyée" };
+  var AUTO = {
+    recu: "Nous avons bien reçu ta candidature et ta vidéo. Statut : Reçu.",
+    en_cours: "L'équipe Convex étudie ton dossier. Statut : En cours.",
+    traite: "Ton dossier a été traité par l'équipe. Tu recevras une réponse très bientôt.",
+    reponse: "Notre réponse t'a été envoyée. Merci d'avoir candidaté à Convex."
+  };
+  var LABELS = { city: "Ville", styles: "Styles", years: "Depuis", gear: "Matériel", prod: "Produit", prodlink: "Productions", mix: "Mix", duration: "Durée", dispo: "Disponibilités", motivation: "Motivation", why: "Pourquoi", style: "Style" };
+  var COLORS = { ID: "#A49E92", Rico: "#58562F", Ayla: "#7F5434" };
+
+  function h(tag, props) {
+    var e = document.createElement(tag);
+    props = props || {};
+    for (var k in props) {
+      var v = props[k];
+      if (k === "class") e.className = v;
+      else if (k === "text") e.textContent = v;
+      else if (k.slice(0, 2) === "on") e.addEventListener(k.slice(2), v);
+      else if (v !== false && v !== null && v !== undefined) e.setAttribute(k, v);
+    }
+    for (var i = 2; i < arguments.length; i++) {
+      var c = arguments[i];
+      if (c === null || c === undefined || c === false) continue;
+      e.appendChild(typeof c === "string" ? document.createTextNode(c) : c);
+    }
+    return e;
+  }
+  function fmt(t) {
+    var d = new Date(t);
+    return d.toLocaleDateString("fr-FR", { day: "2-digit", month: "2-digit" }) + " " + d.toLocaleTimeString("fr-FR", { hour: "2-digit", minute: "2-digit" });
+  }
+  function stepper(cur, dark) {
+    var ol = h("ol", { class: "steps" + (dark ? " dk" : "") });
+    ST.forEach(function (s, i) {
+      ol.appendChild(h("li", { class: i <= cur ? "on" : "" }, h("span", { class: "lab", text: "0" + (i + 1) }), STL[s]));
+    });
+    return ol;
+  }
+  function showErr(form, msg) {
+    var p = form.querySelector(".err");
+    p.hidden = false; p.textContent = msg;
+    p.scrollIntoView({ block: "center" });
+  }
+  function notConnected() {
+    return h("p", { class: "err", text: "La plateforme n'est pas encore connectée au serveur. Reviens un peu plus tard." });
+  }
+
+  /* ---------- candidatures ---------- */
+  function bindForm(form) {
+    var kind = form.getAttribute("data-kind");
+    var file = form.querySelector("input[type=file]");
+    var vn = form.querySelector(".vname");
+    var original = vn.textContent;
+    file.addEventListener("change", function () {
+      vn.textContent = file.files[0] ? "Vidéo ajoutée : " + file.files[0].name : original;
+    });
+    form.addEventListener("submit", async function (e) {
+      e.preventDefault();
+      var err = form.querySelector(".err"); err.hidden = true;
+      if (!sb) { showErr(form, "La plateforme n'est pas encore connectée au serveur."); return; }
+      var v = file.files[0];
+      if (!v) { showErr(form, "La vidéo est obligatoire. Dépose un fichier vidéo pour envoyer ta candidature."); return; }
+      if (v.size > 52428800) { showErr(form, "La vidéo dépasse 50 Mo. Compresse-la ou envoie un extrait plus court."); return; }
+      var fd = new FormData(form);
+      var ref = "CVX-" + Array.prototype.map.call(crypto.getRandomValues(new Uint8Array(6)), function (b) { return "ABCDEFGHJKLMNPQRSTUVWXYZ23456789".charAt(b % 32); }).join("");
+      var btn = form.querySelector("button[type=submit]");
+      btn.disabled = true; var old = btn.textContent; btn.textContent = "Envoi de la vidéo…";
+      var safe = v.name.replace(/[^A-Za-z0-9._-]/g, "_");
+      var path = ref + "/" + safe;
+      var up = await sb.storage.from("videos").upload(path, v, { contentType: v.type || "video/mp4" });
+      if (up.error) { btn.disabled = false; btn.textContent = old; showErr(form, "Envoi de la vidéo impossible : " + up.error.message); return; }
+      var payload = {};
+      ["city", "years", "gear", "prod", "prodlink", "mix", "duration", "dispo", "motivation", "why", "style"].forEach(function (k) {
+        var val = fd.get(k); if (val) payload[k] = String(val);
+      });
+      var styles = fd.getAll("styles"); if (styles.length) payload.styles = styles.join(", ");
+      var ins = await sb.from("applications").insert({
+        ref: ref, kind: kind, artist: fd.get("artist"), full_name: fd.get("full_name"), email: fd.get("email"),
+        phone: fd.get("phone"), instagram: fd.get("instagram"), payload: payload, video_path: path
+      });
+      btn.disabled = false; btn.textContent = old;
+      if (ins.error) { showErr(form, "Envoi impossible : " + ins.error.message); return; }
+      thanks(ref, String(fd.get("email")));
+    });
+  }
+  function thanks(ref, email) {
+    app.replaceChildren(h("section", { class: "green", style: "min-height:70vh" },
+      h("div", { class: "wrap", style: "padding-top:80px;padding-bottom:96px;display:flex;flex-direction:column;gap:24px" },
+        h("p", { class: "lab", style: "font-size:13px;color:#A49E92", text: "Candidature envoyée" }),
+        h("h1", { class: "disp", style: "font-size:clamp(52px,8vw,110px)", text: "Merci, c'est envoyé." }),
+        h("div", { class: "box" },
+          h("div", {}, h("p", { class: "lab", style: "font-size:11px;color:#A49E92;margin:0 0 10px", text: "Réponse automatique" }),
+            h("p", { style: "margin:0;font-size:16px;line-height:1.6", text: AUTO.recu + " Ta référence : " + ref + ". Garde-la avec ton email (" + email + ") pour suivre ton dossier." })),
+          stepper(0, true)),
+        h("div", { class: "row", style: "margin-top:0" },
+          h("a", { class: "btn lab", href: "#/suivi", text: "Suivre ma candidature" }),
+          h("a", { class: "btn out lab", href: "#/", text: "Retour à l'accueil" })))));
+    window.scrollTo(0, 0);
+  }
+
+  /* ---------- suivi ---------- */
+  function bindTrack() {
+    var f = document.getElementById("trackForm"), out = document.getElementById("trackOut");
+    f.addEventListener("submit", async function (e) {
+      e.preventDefault();
+      f.querySelector(".err").hidden = true; out.textContent = "";
+      if (!sb) { showErr(f, "La plateforme n'est pas encore connectée au serveur."); return; }
+      var r = await sb.rpc("track_application", { p_ref: f.ref.value, p_email: f.email.value });
+      if (r.error) { showErr(f, "Erreur : " + r.error.message); return; }
+      if (!r.data || !r.data.length) { showErr(f, "Aucun dossier trouvé avec cette référence et cet email."); return; }
+      var d = r.data[0], i = ST.indexOf(d.status);
+      out.appendChild(h("div", { class: "app" },
+        h("div", { class: "top" }, h("b", { style: "font-size:22px", text: d.artist }), h("span", { class: "tag", text: (d.kind === "battle" ? "Battle B2B" : "Proposer un set") + " · " + fmt(d.created_at) })),
+        stepper(i, false),
+        h("p", { style: "margin:0;font-size:16px;line-height:1.6", text: AUTO[d.status] }),
+        d.reply ? h("div", { class: "ok" }, h("b", { text: "Message de l'équipe : " }), d.reply) : null));
+    });
+  }
+
+  /* ---------- espace équipe ---------- */
+  async function teamPage() {
+    var box = document.getElementById("team");
+    if (!sb) { box.appendChild(notConnected()); return; }
+    var s = (await sb.auth.getSession()).data.session;
+    if (!s) { loginView(box); return; }
+    dashboard(box, s.user);
+  }
+  function loginView(box) {
+    var err = h("p", { class: "err", role: "alert", hidden: "hidden" });
+    var f = h("form", { style: "max-width:460px;display:flex;flex-direction:column;gap:20px", onsubmit: async function (e) {
+      e.preventDefault(); err.hidden = true;
+      var r = await sb.auth.signInWithPassword({ email: f.email.value, password: f.password.value });
+      if (r.error) { err.hidden = false; err.textContent = "Connexion impossible : email ou mot de passe incorrect."; return; }
+      box.replaceChildren(); dashboard(box, r.data.user);
+    } },
+      h("label", { class: "fl" }, "Email", h("input", { class: "in", name: "email", type: "email", required: "required", autocomplete: "username" })),
+      h("label", { class: "fl" }, "Mot de passe", h("input", { class: "in", name: "password", type: "password", required: "required", autocomplete: "current-password" })),
+      err,
+      h("div", {}, h("button", { class: "btn dk lab", type: "submit", text: "Se connecter" })),
+      h("p", { class: "hint", text: "Accès réservé à l'équipe. Les comptes sont créés par Rico." }));
+    box.replaceChildren(f);
+  }
+  async function dashboard(box, user) {
+    var p = (await sb.from("profiles").select("name").eq("id", user.id).maybeSingle()).data;
+    if (!p) { pickName(box, user); return; }
+    var me = p.name;
+    var bar = h("div", { style: "display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:12px;margin-bottom:24px" },
+      h("p", { style: "margin:0;font-size:16px" }, "Connecté en tant que ", h("b", { text: me })),
+      h("button", { class: "tab", text: "Se déconnecter", onclick: async function () { await sb.auth.signOut(); box.replaceChildren(); loginView(box); } }));
+    var banner = h("p", { class: "ok", hidden: "hidden", style: "margin-bottom:16px" });
+    var tabs = h("div", { class: "tabs" });
+    var panelApps = h("div"), panelChat = h("div", { hidden: "hidden" });
+    var tA = h("button", { class: "tab on", text: "Candidatures", onclick: function () { sel(0); } });
+    var tC = h("button", { class: "tab", text: "Chat équipe", onclick: function () { sel(1); } });
+    function sel(i) { tA.className = "tab" + (i === 0 ? " on" : ""); tC.className = "tab" + (i === 1 ? " on" : ""); panelApps.hidden = i !== 0; panelChat.hidden = i !== 1; }
+    tabs.appendChild(tA); tabs.appendChild(tC);
+    box.replaceChildren(bar, banner, tabs, panelApps, panelChat);
+    appsPanel(panelApps, banner);
+    chatPanel(panelChat, user, me);
+  }
+  async function pickName(box, user) {
+    var err = h("p", { class: "err", hidden: "hidden" });
+    var row = h("div", { class: "row", style: "margin-top:0" });
+    ["ID", "Rico", "Ayla"].forEach(function (n) {
+      row.appendChild(h("button", { class: "btn dk lab", text: n, onclick: async function () {
+        var r = await sb.from("profiles").insert({ id: user.id, name: n });
+        if (r.error) { err.hidden = false; err.textContent = "Ce nom est déjà pris ou impossible à enregistrer."; return; }
+        box.replaceChildren(); dashboard(box, user);
+      } }));
+    });
+    box.replaceChildren(h("p", { style: "font-size:18px", text: "Première connexion : qui es-tu ?" }), row, err);
+  }
+  function appsPanel(panel, banner) {
+    var list = h("div");
+    var filter = h("select", { class: "in", style: "max-width:260px;margin-bottom:20px", onchange: load });
+    [["", "Tous les statuts"], ["recu", "Reçu"], ["en_cours", "En cours"], ["traite", "Traité"], ["reponse", "Réponse envoyée"]].forEach(function (o) { filter.appendChild(h("option", { value: o[0], text: o[1] })); });
+    panel.appendChild(filter); panel.appendChild(list);
+    async function load() {
+      var q = sb.from("applications").select("*").order("created_at", { ascending: false });
+      if (filter.value) q = q.eq("status", filter.value);
+      var r = await q;
+      list.replaceChildren();
+      if (r.error) { list.appendChild(h("p", { class: "err", text: r.error.message })); return; }
+      if (!r.data.length) list.appendChild(h("p", { text: "Aucune candidature pour l'instant." }));
+      r.data.forEach(function (a) { list.appendChild(card(a)); });
+    }
+    function card(a) {
+      var dl = h("dl", {});
+      function add(k, v) {
+        if (!v) return;
+        var dd = h("dd", {});
+        if (/^https?:[/][/]/.test(v)) dd.appendChild(h("a", { href: v, target: "_blank", rel: "noopener", text: v, style: "color:#1A2B25" }));
+        else dd.textContent = v;
+        dl.appendChild(h("dt", { text: k })); dl.appendChild(dd);
+      }
+      add("Nom", a.full_name); add("Email", a.email); add("Téléphone", a.phone); add("Instagram", a.instagram);
+      Object.keys(a.payload || {}).forEach(function (k) { add(LABELS[k] || k, a.payload[k]); });
+      var status = h("select", { class: "in", style: "max-width:240px", onchange: async function () {
+        var r = await sb.from("applications").update({ status: status.value }).eq("id", a.id);
+        msg.textContent = r.error ? "Erreur : " + r.error.message : "Statut mis à jour.";
+      } });
+      ST.forEach(function (s) { var o = h("option", { value: s, text: STL[s] }); if (s === a.status) o.selected = true; status.appendChild(o); });
+      var reply = h("textarea", { class: "in", rows: "2", placeholder: "Message visible par le candidat sur la page Suivi", style: "min-height:70px" });
+      reply.value = a.reply || "";
+      var msg = h("span", { class: "hint" });
+      return h("article", { class: "app" },
+        h("div", { class: "top" }, h("b", { style: "font-size:20px", text: a.artist }), h("span", { class: "tag", text: (a.kind === "battle" ? "Battle B2B" : "Set") + " · " + a.ref + " · " + fmt(a.created_at) })),
+        dl,
+        h("div", { style: "display:flex;flex-wrap:wrap;gap:10px;align-items:center" },
+          h("button", { class: "btn dk lab", style: "padding:14px 22px", text: "Voir la vidéo", onclick: async function () {
+            var r = await sb.storage.from("videos").createSignedUrl(a.video_path, 3600);
+            if (r.error) { msg.textContent = "Vidéo introuvable : " + r.error.message; return; }
+            window.open(r.data.signedUrl, "_blank", "noopener");
+          } }), status),
+        reply,
+        h("div", { style: "display:flex;flex-wrap:wrap;gap:12px;align-items:center" },
+          h("button", { class: "tab", text: "Enregistrer le message", onclick: async function () {
+            var r = await sb.from("applications").update({ reply: reply.value || null }).eq("id", a.id);
+            msg.textContent = r.error ? "Erreur : " + r.error.message : "Message enregistré.";
+          } }), msg));
+    }
+    load();
+    var ch = sb.channel("apps").on("postgres_changes", { event: "INSERT", schema: "public", table: "applications" }, function (p) {
+      banner.hidden = false; banner.textContent = "Nouvelle candidature : " + p.new.artist; load();
+    }).subscribe();
+    chans.push(ch);
+  }
+  function chatPanel(panel, user, me) {
+    var msgs = h("div", { class: "msgs" }), seen = {};
+    function add(m) {
+      if (seen[m.id]) return; seen[m.id] = 1;
+      var mine = m.author === user.id;
+      msgs.appendChild(h("div", { class: "m" + (mine ? " me" : "") },
+        h("small", { text: m.author_name + " · " + fmt(m.created_at) }),
+        h("p", { text: m.body, style: "background:" + (COLORS[m.author_name] || "#1A2B25") + ";color:" + (m.author_name === "ID" ? "#0B0D0C" : "#fff") })));
+      msgs.scrollTop = msgs.scrollHeight;
+    }
+    var input = h("input", { class: "in", placeholder: "Écris un message à l'équipe…", maxlength: "2000", "aria-label": "Ton message" });
+    var form = h("form", { class: "send", onsubmit: async function (e) {
+      e.preventDefault();
+      var t = input.value.trim(); if (!t) return;
+      var r = await sb.from("messages").insert({ author_name: me, body: t }).select().single();
+      if (r.error) { alert("Envoi impossible : " + r.error.message); return; }
+      input.value = ""; add(r.data);
+    } }, input, h("button", { class: "btn dk lab", type: "submit", text: "Envoyer" }));
+    panel.appendChild(h("div", { class: "chat" }, msgs, form));
+    sb.from("messages").select("*").order("created_at", { ascending: true }).limit(300).then(function (r) { (r.data || []).forEach(add); });
+    var ch = sb.channel("msgs").on("postgres_changes", { event: "INSERT", schema: "public", table: "messages" }, function (p) { add(p.new); }).subscribe();
+    chans.push(ch);
+  }
+
+  /* ---------- routeur ---------- */
+  function route() {
+    if (sb) chans.forEach(function (c) { sb.removeChannel(c); });
+    chans = [];
+    var r = (location.hash || "#/").replace("#/", "") || "home";
+    var scroll = null, name = r;
+    if (r === "soirees") { name = "home"; scroll = "soirees"; }
+    if (r === "communaute") { name = "home"; scroll = "communaute"; }
+    if (r === "battle-form") { name = "battle"; scroll = "inscription-battle"; }
+    var t = document.getElementById("t-" + (name === "reglement" ? "rules" : name === "suivi" ? "track" : name === "equipe" ? "team" : name));
+    if (!t) { name = "home"; t = document.getElementById("t-home"); }
+    app.replaceChildren(t.content.cloneNode(true));
+    app.querySelectorAll("form[data-kind]").forEach(bindForm);
+    if (name === "suivi") bindTrack();
+    if (name === "equipe") teamPage();
+    var f = app.querySelector("form[data-kind=battle]");
+    if (scroll === "inscription-battle" && f) f.scrollIntoView({ block: "center" });
+    else if (scroll) { var el = document.getElementById(scroll); if (el) el.scrollIntoView(); }
+    else window.scrollTo(0, 0);
+    document.querySelectorAll("#nav a").forEach(function (a) { a.className = a.className.replace(" cur", ""); if (a.getAttribute("href") === "#/" + r && !a.classList.contains("btn")) a.className += " cur"; });
+  }
+  window.addEventListener("hashchange", route);
+  route();
+})();
+</script>
+</body>
+</html>
